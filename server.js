@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 //parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
+//allow express to access public files like css and js and images
+app.use(express.static('public'));
 //parse incoming json data
 app.use(express.json());
 const { animals } = require('./data/animals.json');
@@ -45,7 +47,7 @@ function filterByQuery(query, animalsArray) {
 };
 
 function findById(id, animalsArray) {
-    const result = animalsArray.filter(animal => animal.id === id[0]);
+    const result = animalsArray.filter(animal => animal.id === id)[0];
     return result;
 }
 
@@ -104,6 +106,19 @@ app.post('/api/animals', (req, res) => {
         res.json(animal);
     }
     
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+app.get('/animals', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+app.get('/zookeepers', (req,res) => {
+    res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+});
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 app.listen(PORT, () => {

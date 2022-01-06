@@ -138,6 +138,26 @@
         "hungry"
       ],
       "id": "16"
+    },
+    {
+      "name": "Harry",
+      "species": "Polar Bear",
+      "diet": "herbivore",
+      "personalityTraits": [
+        "loving",
+        "goofy"
+      ],
+      "id": "17"
+    },
+    {
+      "name": "Wolfie",
+      "species": "Wolf",
+      "diet": "carnivore",
+      "personalityTraits": [
+        "hungry",
+        "zany"
+      ],
+      "id": "18"
     }
   ]
 }
